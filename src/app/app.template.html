@@ -1,0 +1,32 @@
+<!-- Menu -->
+<ion-menu [content]="content">
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="outer-content">
+
+    <ion-list>
+      <ion-list-header>
+        Account
+      </ion-list-header>
+      <button ion-item menuClose>
+        <ion-icon item-left name="log-in"></ion-icon>
+        Login
+      </button>
+      <button ion-item menuClose>
+        <ion-icon item-left name="person-add"></ion-icon>
+        Signup
+      </button>
+    </ion-list>
+
+  </ion-content>
+
+
+</ion-menu>
+
+<!-- main navigation -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
