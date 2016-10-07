@@ -14,13 +14,9 @@ import { TabsPage } from "../tabs/tabs";
 })
 export class LoginPage {
   login: {username?: string, password?: string} = {};
-  submitted = false;
+  submitted: boolean = false;
 
   constructor(public navCtrl: NavController) {}
-
-  ionViewDidLoad() {
-    console.log('Hello Login Page');
-  }
 
   onLogin(form) {
     this.submitted = true;

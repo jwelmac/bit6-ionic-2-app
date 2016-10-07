@@ -10,6 +10,8 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class AppData {
+  //Bit6 instance
+  b6: any;
 
   constructor(public http: Http) {
     console.log('Hello AppData Provider');
