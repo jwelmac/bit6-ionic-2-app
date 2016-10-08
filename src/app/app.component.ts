@@ -31,7 +31,9 @@ export class MyApp {
   }
 
   initBit6() {
-    this.appData.b6 = Bit6.init({'apikey': '1vz0h-igD0Jc087r1v'});
+    var apikey = this.appData.getApiKey();
+    console.log("Apikey: ", apikey);
+    this.appData.b6 = Bit6.init(apikey);
     console.log(this.appData.b6);
   }
 }

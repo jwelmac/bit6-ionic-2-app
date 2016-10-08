@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 /*
   Generated class for the AppData provider.
@@ -11,10 +12,24 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AppData {
   //Bit6 instance
-  b6: any;
+  public b6: any;
+  private configUrl: string = "app.config.json";
+  private config: any;
 
   constructor(public http: Http) {
-    console.log('Hello AppData Provider');
+    this.http.get(this.configUrl)
+             .map(res => res.json())
+             .subscribe(data => this.config = data,
+                        err => this.handleError);
+  }
+
+  getApiKey(): any {
+    return {'apikey': this.config.apikey};
+  }
+
+  private handleError(error: any): Promise<any> {
+    console.error('An error occurred', error); // for demo purposes only
+    return Promise.reject(error.message || error);
   }
 
 }

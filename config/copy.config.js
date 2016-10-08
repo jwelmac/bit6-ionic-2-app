@@ -27,5 +27,9 @@ module.exports = {
       src: 'node_modules/webrtc-adapter/out/adapter.js',
       dest: 'www/build/adapter.js'
     },
+    {
+      src: 'app.config.json',
+      dest: 'www/app.config.json'
+    },
   ]
 };
