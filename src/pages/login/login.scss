@@ -7,18 +7,18 @@ page-login {
 }
 
 .logo {
-    width: 70%;
+    width: 50%;
     margin: auto;
     max-height: 50vh;
 }
 
 .bg-gradient{
-  background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0, #008DC9), color-stop(1, #019DA5));
-  background-image: -o-linear-gradient(left, #019DA5 0%, #008DC9 100%);
-  background-image: -moz-linear-gradient(left, #019DA5 0%, #008DC9 100%);
-  background-image: -webkit-linear-gradient(left, #019DA5 0%, #008DC9 100%);
-  background-image: -ms-linear-gradient(left, #019DA5 0%, #008DC9 100%);
-  background-image: linear-gradient(to left, #019DA5 0%, #008DC9 100%);
+  background-image: -webkit-gradient(linear, left bottom, right top, color-stop(0, #478aff), color-stop(1, #fe6600));
+  background-image: -o-linear-gradient(to bottom left, #fe6600 0%, #478aff 100%);
+  background-image: -moz-linear-gradient(to bottom left, #fe6600 0%, #478aff 100%);
+  background-image: -webkit-linear-gradient(to bottom left, #fe6600 0%, #478aff 100%);
+  background-image: -ms-linear-gradient(to bottom left, #fe6600 0%, #478aff 100%);
+  background-image: linear-gradient(to bottom left, #fe6600 0%, #478aff 100%);
 
   a {
     color: white;
@@ -32,9 +32,9 @@ page-login {
     ion-label {
       color: white !important;
     }
-  }
-}
 
-.item-md {
-  padding-left: 0;
+    .item-md {
+      padding-left: 0;
+    }
+  }
 }

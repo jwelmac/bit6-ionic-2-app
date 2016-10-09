@@ -38,7 +38,7 @@
           Password is required
         </p>
 
-        <div [hidden]="!signup">
+        <div *ngIf="signup">
           <ion-item >
             <ion-label floating color="primary">Confirm Password</ion-label>
             <ion-input [(ngModel)]="login.passwordCheck" type="password"
@@ -69,4 +69,10 @@
         </ion-row>
       </form>
     </ion-list>
+    <ion-footer class="text-center">
+      <small>
+        <a href="https://github.com/bit6/bit6-cordova" target="_blank">Bit6 Cordova Plugin v0.9.9</a> |
+        <a href="http://ionicframework.com/docs/v2/" target="_blank">Ionic v2-rc0</a>
+      </small>
+    </ion-footer>
 </ion-content>
