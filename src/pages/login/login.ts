@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { TabsPage } from "../tabs/tabs";
+import { AppData }  from "../../providers/app-data";
 
 /*
   Generated class for the Login page.
@@ -16,7 +17,7 @@ export class LoginPage {
   login: {username?: string, password?: string} = {};
   submitted: boolean = false;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, public appData: AppData) {}
 
   onLogin(form) {
     this.submitted = true;

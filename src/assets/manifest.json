@@ -1,10 +1,10 @@
 {
-  "name": "Ionic",
-  "short_name": "Ionic",
+  "name": "Bit6 Ionic 2 App",
+  "short_name": "Bit6 Ionic 2",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
-    "src": "assets/imgs/logo.png",
+    "src": "/assets/imgs/logo.png",
     "sizes": "512x512",
     "type": "image/png"
   }],

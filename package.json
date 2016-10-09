@@ -1,7 +1,7 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "bit6-ionic-2-app",
+  "author": "Jermaine McFarlane <admin@meditall.co>",
+  "homepage": "https://www.meditall.co",
   "private": true,
   "scripts": {
     "build": "ionic-app-scripts build --copy ./config/copy.config.js",

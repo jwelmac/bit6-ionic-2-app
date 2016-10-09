@@ -6,7 +6,6 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { AppData }  from "../providers/app-data";
 
-declare var Bit6;
 
 @Component({
   templateUrl: 'app.template.html'
@@ -21,19 +20,12 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       //initBit6
-      this.initBit6();
+      this.appData.initBit6();
     });
 
     this.showLogin = true;
 
     //Set the root page
     this.rootPage = this.showLogin ? LoginPage : TabsPage;
-  }
-
-  initBit6() {
-    var apikey = this.appData.getApiKey();
-    console.log("Apikey: ", apikey);
-    this.appData.b6 = Bit6.init(apikey);
-    console.log(this.appData.b6);
   }
 }
