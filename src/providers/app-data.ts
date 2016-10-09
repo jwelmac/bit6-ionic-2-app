@@ -38,24 +38,26 @@ export class AppData {
   }
 
   // Common click handler for signup and login buttons
-  authClicked(ident, pass, isNewUser, uri = "usr") {
+  authClicked(ident, pass, isNewUser, uri = "usr"): Promise<any> {
       // Call either login or signup function
       var fn = isNewUser ? 'signup' : 'login';
-      this.b6.session[fn]({'identity': uri+":"+ident, 'password': pass}, err => {
-          if (err) {
-              console.log('auth error', err);
-              var msg = isNewUser ? 'New user' : 'Login';
-              msg += ': ' + err.message;
-          }
-          else {
-              if (this.keepLoggedIn) {
-                  // Save auth data
-                  window.localStorage.setItem('bit6_auth', JSON.stringify(this.b6.session.save()));
-              }
-              console.log('auth done');
-          }
+      return new Promise( (resolve, reject) => {
+        this.b6.session[fn]({'identity': uri+":"+ident, 'password': pass}, err => {
+            if (err) {
+                console.log('auth error', err);
+                var msg = isNewUser ? 'New user' : 'Login';
+                msg += ': ' + err.message;
+                reject(msg);
+            }
+            else {
+                if (this.keepLoggedIn) {
+                    // Save auth data
+                    window.localStorage.setItem('bit6_auth', JSON.stringify(this.b6.session.save()));
+                }
+                resolve();
+            }
+        });
       });
-      return false;
   }
 
   private handleError(error: any): Promise<any> {

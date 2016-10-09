@@ -5,3 +5,36 @@ page-login {
 #not_yet_registered {
   vertical-align: -webkit-baseline-middle;
 }
+
+.logo {
+    width: 70%;
+    margin: auto;
+    max-height: 50vh;
+}
+
+.bg-gradient{
+  background-image: -webkit-gradient(linear, right bottom, left bottom, color-stop(0, #008DC9), color-stop(1, #019DA5));
+  background-image: -o-linear-gradient(left, #019DA5 0%, #008DC9 100%);
+  background-image: -moz-linear-gradient(left, #019DA5 0%, #008DC9 100%);
+  background-image: -webkit-linear-gradient(left, #019DA5 0%, #008DC9 100%);
+  background-image: -ms-linear-gradient(left, #019DA5 0%, #008DC9 100%);
+  background-image: linear-gradient(to left, #019DA5 0%, #008DC9 100%);
+
+  a {
+    color: white;
+  }
+
+  form {
+    ion-item {
+      background-color: transparent;
+    }
+
+    ion-label {
+      color: white !important;
+    }
+  }
+}
+
+.item-md {
+  padding-left: 0;
+}

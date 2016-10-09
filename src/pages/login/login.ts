@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 
 import { TabsPage } from "../tabs/tabs";
 import { AppData }  from "../../providers/app-data";
@@ -14,10 +14,23 @@ import { AppData }  from "../../providers/app-data";
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  login: {username?: string, password?: string} = {};
+  login: {
+    username?: string,
+    password?: string,
+    passwordCheck?: string,
+    passwordsMatch?: boolean
+  } = {};
   submitted: boolean = false;
+  signup: boolean = false;
+  passwordCheck: any;
 
-  constructor(public navCtrl: NavController, public appData: AppData) {}
+  constructor(
+    public navCtrl: NavController,
+    public appData: AppData,
+    private toastCtrl: ToastController
+  ) {
+    this.login.passwordsMatch = true;
+  }
 
   onLogin(form) {
     this.submitted = true;
@@ -29,7 +42,20 @@ export class LoginPage {
   }
 
   onSignup() {
+    // let toast = this.toastCtrl.create({
+    //   message: "Signup to be implemented",
+    //   showCloseButton: true,
+    //   closeButtonText: "OK"
+    // });
+    //
+    // toast.present();
+    this.signup = !this.signup;
     console.log("Signup clicked");
+  }
+
+  checkPasswordsMatch() {
+    this.login.passwordsMatch = (this.login.password === this.login.passwordCheck);
+    console.log("password match checked");
   }
 
 }

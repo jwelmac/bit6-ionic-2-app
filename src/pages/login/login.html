@@ -13,11 +13,11 @@
 </ion-header> -->
 
 
-<ion-content padding>
+<ion-content class="bg-gradient" padding>
   <ion-list>
-      <!-- <div class="logo">
-        <img src="assets/img/appicon.svg">
-      </div> -->
+      <div class="logo">
+        <img src="assets/img/logo.png">
+      </div>
 
       <form #loginForm="ngForm" novalidate>
         <ion-item>
@@ -38,6 +38,18 @@
           Password is required
         </p>
 
+        <div [hidden]="!signup">
+          <ion-item >
+            <ion-label floating color="primary">Confirm Password</ion-label>
+            <ion-input [(ngModel)]="login.passwordCheck" type="password"
+            [ngModelOptions]="{standalone: true}"  (keyup)="checkPasswordsMatch()" required>
+            </ion-input>
+          </ion-item>
+          <p [hidden]="login.passwordsMatch" color="danger" padding-left>
+            Passwords don't match
+          </p>
+        </div>
+
         <ion-item>
           <ion-label>Remember Me: </ion-label>
           <ion-toggle [(ngModel)]="appData.keepLoggedIn" [ngModelOptions]="{standalone: true}"></ion-toggle>
@@ -45,11 +57,13 @@
 
         <ion-row responsive-sm>
           <ion-col>
-            <button ion-button (click)="onLogin(loginForm)" type="submit" color="primary" block>Login</button>
+            <button ion-button (click)="onLogin(loginForm)" type="submit" color="primary" block>
+              {{signup ? "Sign Up" : "Login"}}
+            </button>
           </ion-col>
           <ion-col>
             <div class="text-center">
-              Need an account? <strong><a (click)="onSignup()">Sign Up!</a></strong>
+              {{!signup ? "Need" : "Have"}} an account? <strong><a (click)="onSignup()">{{!signup ? "Sign Up" : "Login"}}!</a></strong>
             </div>
           </ion-col>
         </ion-row>
