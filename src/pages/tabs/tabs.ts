@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
-import { HomePage } from '../home/home';
-import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
+import { ChatsPage } from '../chats/chats';
+import { GroupsPage } from '../groups/groups';
+import { CallsPage } from '../calls/calls';
 
 export interface TabRoot {
   title: string,
@@ -18,9 +18,9 @@ export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
   public tabs: TabRoot[] = [
-    {title: "Home", icon: "home", component: HomePage},
-    {title: "About", icon: "information-circle", component: AboutPage},
-    {title: "Contact", icon: "contacts", component: ContactPage}
+    {title: "Chats", icon: "ios-chatbubbles", component: ChatsPage},
+    {title: "Groups", icon: "ios-people", component: GroupsPage},
+    {title: "Calls", icon: "ios-call", component: CallsPage}
   ];
 
   constructor() {

@@ -6,6 +6,9 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from "../pages/login/login";
+import { ChatsPage } from '../pages/chats/chats';
+import { GroupsPage } from '../pages/groups/groups';
+import { CallsPage } from '../pages/calls/calls';
 import { AppData }  from "../providers/app-data";
 
 @NgModule({
@@ -13,9 +16,11 @@ import { AppData }  from "../providers/app-data";
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    ChatsPage,
+    GroupsPage,
+    CallsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -25,9 +30,11 @@ import { AppData }  from "../providers/app-data";
     MyApp,
     AboutPage,
     ContactPage,
-    HomePage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    ChatsPage,
+    GroupsPage,
+    CallsPage
   ],
   providers: [AppData]
 })

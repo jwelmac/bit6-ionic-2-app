@@ -27,14 +27,11 @@ page-login {
   form {
     ion-item {
       background-color: transparent;
+      padding-left: 0;
     }
 
     ion-label {
       color: white !important;
-    }
-
-    .item-md {
-      padding-left: 0;
     }
   }
 }
