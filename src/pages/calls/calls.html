@@ -12,10 +12,16 @@
     </button>
     <ion-title>Calls</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 
-<ion-content padding>
-  <div>Calls</div>
+
+<ion-content>
+  <!-- Segment buttons with text -->
+  <ion-segment [(ngModel)]="selectedType" color="primary">
+   <ion-segment-button *ngFor="let type of callTypes" value="{{type.value}}" (ionSelect)="selectCallType($event)">
+     {{type.text}}
+   </ion-segment-button>
+  </ion-segment>
+  <div padding>{{selectedType}} Calls</div>
 </ion-content>

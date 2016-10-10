@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { ChatsPage } from '../chats/chats';
 import { GroupsPage } from '../groups/groups';
+import { ContactsPage } from '../contacts/contacts';
 import { CallsPage } from '../calls/calls';
 
 export interface TabRoot {
@@ -19,6 +20,7 @@ export class TabsPage {
   // should be each tab's root Page
   public tabs: TabRoot[] = [
     {title: "Chats", icon: "ios-chatbubbles", component: ChatsPage},
+    {title: "Contacts", icon: "ios-person", component: ContactsPage},
     {title: "Groups", icon: "ios-people", component: GroupsPage},
     {title: "Calls", icon: "ios-call", component: CallsPage}
   ];

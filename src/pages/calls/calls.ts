@@ -12,11 +12,22 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'calls.html'
 })
 export class CallsPage {
+  public selectedType;
+  public callTypes = [
+    {value: "all", text: "All"},
+    {value: "missed", text: "Missed"},
+    {value: "video", text: "Video"},
+    {value: "audio", text: "Audio"},
+  ];
 
   constructor(public navCtrl: NavController) {}
 
   ionViewDidLoad() {
     console.log('Hello Calls Page');
+  }
+
+  selectCallType(event) {
+      this.selectedType = event.value;
   }
 
 }
