@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+
+import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/toPromise';
 
 declare var Bit6;
 
@@ -19,13 +20,17 @@ export class AppData {
   public keepLoggedIn: boolean = false;
   //Config param
   private configUrl: string = "app.config.json";
+  //App configuration
   private config: any;
 
-  constructor(public http: Http) {
+  constructor(public http: Http, public storage: Storage) {
     this.http.get(this.configUrl)
              .map(res => res.json())
              .subscribe(data => this.config = data,
                         err => this.handleError);
+
+    this.storage.get('keepLoggedIn')
+                .then(value => this.keepLoggedIn = value);
   }
 
   //Initialize Bit6
@@ -52,12 +57,19 @@ export class AppData {
             else {
                 if (this.keepLoggedIn) {
                     // Save auth data
-                    window.localStorage.setItem('bit6_auth', JSON.stringify(this.b6.session.save()));
+                    this.storage.set('bit6_auth', this.b6.session.save());
                 }
                 resolve();
             }
         });
       });
+  }
+
+
+  //Store login data to resume session
+  rememberLogin(event) {
+    this.storage.set('keepLoggedIn', event.checked)
+                .then(() => this.keepLoggedIn = event.checked);
   }
 
   private handleError(error: any): Promise<any> {

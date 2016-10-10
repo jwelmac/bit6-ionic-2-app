@@ -13,7 +13,7 @@ import { TabHeader } from '../tab-header/tab-header';
   templateUrl: 'groups.html'
 })
 export class GroupsPage {
-  tabHeader: TabHeader = new TabHeader("Groups");
+  tabHeader: TabHeader = new TabHeader("Groups", "ios-add-circle-outline");
 
   constructor(public navCtrl: NavController) {}
 

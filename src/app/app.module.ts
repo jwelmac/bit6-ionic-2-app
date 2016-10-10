@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
+
 import { IonicApp, IonicModule } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
+
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
@@ -41,6 +44,6 @@ import { AppData }  from "../providers/app-data";
     GroupsPage,
     CallsPage
   ],
-  providers: [AppData]
+  providers: [AppData, Storage]
 })
 export class AppModule {}

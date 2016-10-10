@@ -27,7 +27,7 @@ export class MyApp {
       this.appData.initBit6();
     });
 
-    this.showLogin = false;
+    this.showLogin = true;
 
     //Set the root page
     this.rootPage = this.showLogin ? LoginPage : TabsPage;

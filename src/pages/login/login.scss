@@ -20,18 +20,40 @@ page-login {
   background-image: -ms-linear-gradient(to bottom left, #fe6600 0%, #478aff 100%);
   background-image: linear-gradient(to bottom left, #fe6600 0%, #478aff 100%);
 
-  a {
-    color: white;
-  }
 
-  form {
-    ion-item {
-      background-color: transparent;
-      padding-left: 0;
+}
+
+.login-content{
+    a {
+      color: white;
     }
 
-    ion-label {
-      color: white !important;
+    form {
+      ion-item {
+        background-color: transparent;
+        padding-left: 0;
+      }
+
+      ion-label {
+        color: white !important;
+      }
     }
-  }
+
+    input.text-input {
+        color: white;
+    }
+}
+
+.bg-img {
+  background:
+    /* top, transparent black */
+    linear-gradient(
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)
+    ),
+    /* bottom, image */
+    url("/assets/img/bg-img.jpg")
+    /* X-axis translation*/
+    -85px;
+    background-size: cover;
 }
