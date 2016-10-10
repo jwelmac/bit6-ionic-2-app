@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { TabHeader } from '../tab-header/tab-header';
 /*
   Generated class for the Calls page.
 
@@ -12,7 +13,8 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'calls.html'
 })
 export class CallsPage {
-  public selectedType;
+  tabHeader: TabHeader = new TabHeader("Calls");
+  public selectedType: string = "all";
   public callTypes = [
     {value: "all", text: "All"},
     {value: "missed", text: "Missed"},
@@ -21,10 +23,6 @@ export class CallsPage {
   ];
 
   constructor(public navCtrl: NavController) {}
-
-  ionViewDidLoad() {
-    console.log('Hello Calls Page');
-  }
 
   selectCallType(event) {
       this.selectedType = event.value;

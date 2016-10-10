@@ -5,23 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Calls</ion-title>
-  </ion-navbar>
+  <tab-header [tabHeader]="tabHeader"></tab-header>
 </ion-header>
 
-
-
 <ion-content>
-  <!-- Segment buttons with text -->
-  <ion-segment [(ngModel)]="selectedType" color="primary">
-   <ion-segment-button *ngFor="let type of callTypes" value="{{type.value}}" (ionSelect)="selectCallType($event)">
-     {{type.text}}
-   </ion-segment-button>
-  </ion-segment>
+  <div>
+    <!-- Segment buttons with text -->
+    <ion-segment [(ngModel)]="selectedType" color="primary">
+     <ion-segment-button *ngFor="let type of callTypes" value="{{type.value}}" (ionSelect)="selectCallType($event)">
+       {{type.text}}
+     </ion-segment-button>
+    </ion-segment>
+  </div>
   <div padding>{{selectedType}} Calls</div>
 </ion-content>

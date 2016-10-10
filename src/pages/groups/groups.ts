@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { TabHeader } from '../tab-header/tab-header';
 /*
   Generated class for the Groups page.
 
@@ -12,11 +13,8 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'groups.html'
 })
 export class GroupsPage {
+  tabHeader: TabHeader = new TabHeader("Groups");
 
   constructor(public navCtrl: NavController) {}
-
-  ionViewDidLoad() {
-    console.log('Hello Groups Page');
-  }
 
 }

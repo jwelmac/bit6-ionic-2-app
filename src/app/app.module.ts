@@ -5,6 +5,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TabHeaderComponent } from '../pages/tab-header/tab-header';
 import { LoginPage } from "../pages/login/login";
 import { ChatsPage } from '../pages/chats/chats';
 import { GroupsPage } from '../pages/groups/groups';
@@ -18,6 +19,7 @@ import { AppData }  from "../providers/app-data";
     ContactPage,
     ContactsPage,
     TabsPage,
+    TabHeaderComponent,
     LoginPage,
     ChatsPage,
     GroupsPage,
@@ -33,6 +35,7 @@ import { AppData }  from "../providers/app-data";
     ContactPage,
     ContactsPage,
     TabsPage,
+    TabHeaderComponent,
     LoginPage,
     ChatsPage,
     GroupsPage,

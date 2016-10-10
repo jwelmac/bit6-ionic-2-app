@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { TabHeader } from '../tab-header/tab-header';
+
 /*
   Generated class for the Chats page.
 
@@ -12,11 +14,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'chats.html'
 })
 export class ChatsPage {
-
+  tabHeader: TabHeader = new TabHeader("Chats", "ios-create-outline");
+  
   constructor(public navCtrl: NavController) {}
-
-  ionViewDidLoad() {
-    console.log('Hello Chats Page');
-  }
-
 }

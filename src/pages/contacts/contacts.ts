@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { TabHeader } from '../tab-header/tab-header';
+
 /*
   Generated class for the Contacts page.
 
@@ -12,11 +14,8 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'contacts.html'
 })
 export class ContactsPage {
+  tabHeader: TabHeader = new TabHeader("Contacts", "ios-person-add-outline");
 
   constructor(public navCtrl: NavController) {}
-
-  ionViewDidLoad() {
-    console.log('Hello Contacts Page');
-  }
 
 }
