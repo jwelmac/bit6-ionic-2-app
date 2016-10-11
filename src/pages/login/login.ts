@@ -29,31 +29,28 @@ export class LoginPage {
     public appData: AppData,
     private toastCtrl: ToastController
   ) {
-    this.login.passwordsMatch = true;
+    this.login.passwordsMatch = false;
   }
 
   onLogin(form) {
     this.submitted = true;
 
     if (form.valid) {
-      // this.userData.login(this.login.username);
-      this.appData.authClicked(this.login.username, this.login.password)
-                  .then( msg => this.navCtrl.push(TabsPage)
-                                           .then( () => this.showToast(msg) )
-                       )
+      this.appData.authClicked(this.login.username, this.login.password, this.signup)
+                  .then( msg => this.navCtrl.push(TabsPage).then( () => this.showToast(msg) ))
                   .catch( msg => this.showToast(msg));
     }
   }
 
   onSignup(form) {
     this.signup = !this.signup;
-    console.log("Signup clicked");
   }
 
   showToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
       showCloseButton: true,
+      duration: 3000,
       closeButtonText: "OK"
     });
 
@@ -62,7 +59,6 @@ export class LoginPage {
 
   checkPasswordsMatch() {
     this.login.passwordsMatch = (this.login.password === this.login.passwordCheck);
-    console.log("password match checked");
   }
 
 }

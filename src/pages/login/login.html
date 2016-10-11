@@ -34,10 +34,10 @@
           <ion-item >
             <ion-label floating color="primary">Confirm Password</ion-label>
             <ion-input [(ngModel)]="login.passwordCheck" type="password"
-            [ngModelOptions]="{standalone: true}"  (keyup)="checkPasswordsMatch()" required>
+            name="passwordCheck"  (keyup)="checkPasswordsMatch()" required>
             </ion-input>
           </ion-item>
-          <p [hidden]="login.passwordsMatch" color="danger" padding-left>
+          <p [hidden]="login.passwordsMatch || submitted == false" color="danger" padding-left>
             Passwords don't match
           </p>
         </div>
