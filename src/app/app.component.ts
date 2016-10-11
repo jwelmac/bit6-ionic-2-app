@@ -13,7 +13,6 @@ import { AppData, AUTH_KEY }  from "../providers/app-data";
 })
 export class MyApp {
   rootPage: any;
-  showLogin: boolean;
   @ViewChild("content") nav: NavController;
 
   constructor(
@@ -21,21 +20,30 @@ export class MyApp {
     private appData: AppData,
     private storage: Storage
   ) {
-    platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      //initBit6
-      this.appData.initBit6();
-    });
+      platform.ready().then(() => {
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        StatusBar.styleDefault();
+        //initBit6
+        this.appData.initBit6();
+      });
 
-    this.showLogin = true;
-
-    //Set the root page
-    this.storage.get(AUTH_KEY)
-                .then( value => {
-                  this.rootPage = value ? TabsPage : LoginPage;
-                });
+      //Set the root page
+      this.storage.get(AUTH_KEY).then( value => {
+          if (appData.b6 && value){
+              appData.b6.session.resume(value, err => {
+                  if (err) {
+                      this.rootPage = LoginPage;
+                      setTimeout(() => appData.showToast(err), 1000);
+                  } else {
+                      this.rootPage = TabsPage;
+                      console.log('Bit6:', appData.b6);
+                  }
+              });
+          } else {
+            this.rootPage = LoginPage;
+          }
+      });
   }
 
   logout() {

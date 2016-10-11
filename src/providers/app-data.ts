@@ -22,6 +22,8 @@ export class AppData {
   public b6: any;
   //Should user stay logged in?
   public keepLoggedIn: boolean = false;
+  // Current username
+  public displayName: string;
   //Config param
   private configUrl: string = "app.config.json";
   //App configuration
@@ -53,34 +55,34 @@ export class AppData {
   // Common click handler for signup and login buttons
   authClicked(ident, pass, isNewUser = false, uri = "usr"): Promise<any> {
       // Call either login or signup function
-      // var fn = isNewUser ? 'signup' : 'login';
+      var fn = isNewUser ? 'signup' : 'login';
       return new Promise( (resolve, reject) => {
-          var msg = isNewUser ? 'New user' : 'Login';
-          if (this.keepLoggedIn) {
-              // Save auth data
-              msg = msg+": "+ident+" - logged in";
-              this.storage.set(AUTH_KEY, msg);
-              resolve(msg);
-          } else {
-              var err = {message: "Error message", line: 65};
-              this.handleError(err);
-              reject(err);
-          }
-        // this.b6.session[fn]({'identity': uri+":"+ident, 'password': pass}, err => {
-        //     var msg = isNewUser ? 'New user' : 'Login';
-        //     if (err) {
-        //         msg += ': ' + err.message;
-        //         this.handleError(msg);
-        //         reject(err);
-        //     }
-        //     else {
-        //         if (this.keepLoggedIn) {
-        //             // Save auth data
-        //             this.storage.set(AUTH_KEY, this.b6.session.save());
-        //         }
-        //         resolve(msg+": "+ident+" - logged in");
-        //     }
-        // });
+          // var msg = isNewUser ? 'New user' : 'Login';
+          // if (this.keepLoggedIn) {
+          //     // Save auth data
+          //     msg = msg+": "+ident+" - logged in";
+          //     this.storage.set(AUTH_KEY, msg);
+          //     resolve(msg);
+          // } else {
+          //     var err = {message: "Error message", line: 65};
+          //     this.handleError(err);
+          //     reject(err);
+          // }
+        this.b6.session[fn]({'identity': uri+":"+ident, 'password': pass}, err => {
+            var msg = isNewUser ? 'New user' : 'Login';
+            if (err) {
+                msg += ': ' + err.message;
+                this.handleError(msg);
+                reject(err);
+            }
+            else {
+                if (this.keepLoggedIn) {
+                    // Save auth data
+                    this.storage.set(AUTH_KEY, this.b6.session.save());
+                }
+                resolve(msg+": "+ident+" - logged in");
+            }
+        });
       });
   }
 
@@ -95,7 +97,6 @@ export class AppData {
     this.showToast('Error: '+(error.message || error));
   }
 
-
   showToast(msg) {
     let toast = this.toastCtrl.create({
       message: msg,
@@ -105,6 +106,10 @@ export class AppData {
     });
 
     toast.present();
+  }
+
+  setDisplayName(): string {
+    return this.b6.session.displayName = this.b6.getNameFromIdentity(this.b6.session.identity);
   }
 
 }
