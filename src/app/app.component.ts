@@ -1,10 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
+import { Storage } from '@ionic/storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-import { AppData }  from "../providers/app-data";
+import { AppData, AUTH_KEY }  from "../providers/app-data";
 
 
 @Component({
@@ -17,7 +18,8 @@ export class MyApp {
 
   constructor(
     public platform: Platform,
-    private appData: AppData
+    private appData: AppData,
+    private storage: Storage
   ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -30,11 +32,14 @@ export class MyApp {
     this.showLogin = true;
 
     //Set the root page
-    this.rootPage = this.showLogin ? LoginPage : TabsPage;
+    this.storage.get(AUTH_KEY)
+                .then( value => {
+                  this.rootPage = value ? TabsPage : LoginPage;
+                });
   }
 
   logout() {
-    console.log("Logging out...");
-    this.nav.push(LoginPage);
+    this.storage.remove(AUTH_KEY)
+                .then(() => this.nav.push(LoginPage));
   }
 }

@@ -37,20 +37,27 @@ export class LoginPage {
 
     if (form.valid) {
       // this.userData.login(this.login.username);
-      this.navCtrl.push(TabsPage);
+      this.appData.authClicked(this.login.username, this.login.password)
+                  .then( msg => this.navCtrl.push(TabsPage)
+                                           .then( () => this.showToast(msg) )
+                       )
+                  .catch( msg => this.showToast(msg));
     }
   }
 
-  onSignup() {
-    // let toast = this.toastCtrl.create({
-    //   message: "Signup to be implemented",
-    //   showCloseButton: true,
-    //   closeButtonText: "OK"
-    // });
-    //
-    // toast.present();
+  onSignup(form) {
     this.signup = !this.signup;
     console.log("Signup clicked");
+  }
+
+  showToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      showCloseButton: true,
+      closeButtonText: "OK"
+    });
+
+    toast.present();
   }
 
   checkPasswordsMatch() {
