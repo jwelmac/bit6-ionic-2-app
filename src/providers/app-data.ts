@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import { ToastController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
@@ -26,7 +27,11 @@ export class AppData {
   //App configuration
   private config: any;
 
-  constructor(public http: Http, public storage: Storage) {
+  constructor(
+    public http: Http,
+    public storage: Storage,
+    private toastCtrl: ToastController
+  ) {
     this.http.get(this.configUrl)
              .map(res => res.json())
              .subscribe(data => this.config = data,
@@ -57,21 +62,23 @@ export class AppData {
               this.storage.set(AUTH_KEY, msg);
               resolve(msg);
           } else {
-              reject(msg+": Error Thrown");
+              var err = {message: "Error message", line: 65};
+              this.handleError(err);
+              reject(err);
           }
         // this.b6.session[fn]({'identity': uri+":"+ident, 'password': pass}, err => {
+        //     var msg = isNewUser ? 'New user' : 'Login';
         //     if (err) {
-        //         console.log('auth error', err);
-        //         var msg = isNewUser ? 'New user' : 'Login';
         //         msg += ': ' + err.message;
-        //         reject(msg);
+        //         this.handleError(msg);
+        //         reject(err);
         //     }
         //     else {
         //         if (this.keepLoggedIn) {
         //             // Save auth data
-        //             this.storage.set('bit6_auth', this.b6.session.save());
+        //             this.storage.set(AUTH_KEY, this.b6.session.save());
         //         }
-        //         resolve();
+        //         resolve(msg+": "+ident+" - logged in");
         //     }
         // });
       });
@@ -84,9 +91,20 @@ export class AppData {
                 .then(() => this.keepLoggedIn = event.checked);
   }
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
+  private handleError(error: any) {
+    this.showToast('Error: '+(error.message || error));
+  }
+
+
+  showToast(msg) {
+    let toast = this.toastCtrl.create({
+      message: msg,
+      showCloseButton: true,
+      duration: 3000,
+      closeButtonText: "OK"
+    });
+
+    toast.present();
   }
 
 }
