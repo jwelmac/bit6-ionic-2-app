@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TabHeader } from '../tab-header/tab-header';
+import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
 /*
   Generated class for the Groups page.
 
@@ -13,7 +13,8 @@ import { TabHeader } from '../tab-header/tab-header';
   templateUrl: 'groups.html'
 })
 export class GroupsPage {
-  tabHeader: TabHeader = new TabHeader("Groups", "ios-add-circle-outline");
+  headerIcons: TabHeaderIcon[] = [{name: "ios-add-circle-outline"}];
+  tabHeader: TabHeader = new TabHeader("Groups", this.headerIcons);
 
   constructor(public navCtrl: NavController) {}
 

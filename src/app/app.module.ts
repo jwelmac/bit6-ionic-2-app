@@ -8,7 +8,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { TabsPage } from '../pages/tabs/tabs';
-import { TabHeaderComponent } from '../pages/tab-header/tab-header';
+import { TabHeaderComponent } from '../pages/tabs/tab-header/tab-header';
 import { LoginPage } from "../pages/login/login";
 import { ChatsPage } from '../pages/chats/chats';
 import { GroupsPage } from '../pages/groups/groups';

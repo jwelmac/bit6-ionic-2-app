@@ -26,23 +26,14 @@ export class MyApp {
         StatusBar.styleDefault();
         //initBit6
         this.appData.initBit6();
-      });
 
-      //Set the root page
-      this.storage.get(AUTH_KEY).then( value => {
-          if (appData.b6 && value){
-              appData.b6.session.resume(value, err => {
-                  if (err) {
-                      this.rootPage = LoginPage;
-                      setTimeout(() => appData.showToast(err), 1000);
-                  } else {
-                      this.rootPage = TabsPage;
-                      console.log('Bit6:', appData.b6);
-                  }
-              });
-          } else {
-            this.rootPage = LoginPage;
-          }
+        //Set the root page
+        this.storage.get(AUTH_KEY).then( value => {
+            appData.resumeSession(value)
+                   .then( () => this.rootPage = TabsPage)
+                   .catch( () => this.rootPage = LoginPage);
+        });
+
       });
   }
 

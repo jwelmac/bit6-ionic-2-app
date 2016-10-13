@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TabHeader } from '../tab-header/tab-header';
+import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
 
 /*
   Generated class for the Chats page.
@@ -14,7 +14,8 @@ import { TabHeader } from '../tab-header/tab-header';
   templateUrl: 'chats.html'
 })
 export class ChatsPage {
-  tabHeader: TabHeader = new TabHeader("Chats", "ios-create-outline");
-  
+  headerIcons: TabHeaderIcon[] = [{name: "create"}];
+  tabHeader: TabHeader = new TabHeader("Chats", this.headerIcons);
+
   constructor(public navCtrl: NavController) {}
 }

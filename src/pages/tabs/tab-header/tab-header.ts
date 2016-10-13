@@ -1,16 +1,16 @@
 import { Component, Input } from '@angular/core';
 
-/*
-  Generated class for the TabHeader page.
+export interface TabHeaderIcon {
+  name: string,
+  modal?: any
+}
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 export class TabHeader {
   constructor (
     public title: string,
-    public icon: string = ""
-  ){}
+    public icons: Array<TabHeaderIcon> = []
+  ){
+  }
 }
 
 @Component({
@@ -21,4 +21,12 @@ export class TabHeaderComponent {
   @Input() tabHeader: TabHeader;
 
   constructor() {}
+
+  showModal(modal) {
+    if (modal){
+      console.log("Showing Modal: ", modal);
+    } else {
+      console.log("No modal set");
+    }
+  }
 }

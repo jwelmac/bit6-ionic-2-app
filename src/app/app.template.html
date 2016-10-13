@@ -3,7 +3,12 @@
 
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Options</ion-title>
+      <ion-item  color="primary">
+        <ion-avatar item-left>
+          <img src="assets/img/avatar-luke.png">
+        </ion-avatar>
+        <ion-title>{{ appData.getDisplayName() }}</ion-title>
+      </ion-item>
     </ion-toolbar>
   </ion-header>
 
@@ -11,7 +16,7 @@
 
     <ion-list>
       <ion-list-header>
-        Account 
+        Account
       </ion-list-header>
       <button ion-item menuClose>
         <ion-icon item-left name="ios-contact"></ion-icon>

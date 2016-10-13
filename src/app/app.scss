@@ -18,3 +18,13 @@
 .text-center {
   text-align: center;
 }
+
+ion-menu{
+  .toolbar{
+    padding: 0 !important;
+  }
+
+  .toolbar .item-inner{
+    border-bottom: 0 !important;
+  }
+}

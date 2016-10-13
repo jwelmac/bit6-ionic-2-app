@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TabHeader } from '../tab-header/tab-header';
+import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
 
 /*
   Generated class for the Contacts page.
@@ -14,7 +14,8 @@ import { TabHeader } from '../tab-header/tab-header';
   templateUrl: 'contacts.html'
 })
 export class ContactsPage {
-  tabHeader: TabHeader = new TabHeader("Contacts", "ios-person-add-outline");
+  headerIcons: TabHeaderIcon[] = [{name: "ios-person-add-outline"}];
+  tabHeader: TabHeader = new TabHeader("Contacts", this.headerIcons);
 
   constructor(public navCtrl: NavController) {}
 

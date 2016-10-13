@@ -5,7 +5,7 @@ import { GroupsPage } from '../groups/groups';
 import { ContactsPage } from '../contacts/contacts';
 import { CallsPage } from '../calls/calls';
 
-export interface TabRoot {
+export interface TabInterface {
   title: string,
   icon: string,
   component: any
@@ -18,7 +18,7 @@ export interface TabRoot {
 export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  public tabs: TabRoot[] = [
+  public tabs: TabInterface[] = [
     {title: "Chats", icon: "ios-chatbubbles", component: ChatsPage},
     {title: "Contacts", icon: "ios-person", component: ContactsPage},
     {title: "Groups", icon: "ios-people", component: GroupsPage},
