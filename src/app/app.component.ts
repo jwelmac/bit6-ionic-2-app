@@ -16,7 +16,7 @@ export class MyApp {
   @ViewChild("content") nav: NavController;
 
   constructor(
-    public platform: Platform,
+    platform: Platform,
     private appData: AppData,
     private storage: Storage
   ) {
@@ -24,17 +24,21 @@ export class MyApp {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
         StatusBar.styleDefault();
-        //initBit6
-        this.appData.initBit6();
-
-        //Set the root page
-        this.storage.get(AUTH_KEY).then( value => {
-            appData.resumeSession(value)
-                   .then( () => this.rootPage = TabsPage)
-                   .catch( () => this.rootPage = LoginPage);
-        });
-
+        this.init();
       });
+  }
+
+  //Initialize the main app components
+  init() {
+    //initBit6
+    this.appData.initBit6();
+
+    //Set the root page
+    this.storage.get(AUTH_KEY).then( value => {
+        this.appData.resumeSession(value)
+               .then( () => this.rootPage = TabsPage)
+               .catch( () => this.rootPage = LoginPage);
+    });
   }
 
   logout() {

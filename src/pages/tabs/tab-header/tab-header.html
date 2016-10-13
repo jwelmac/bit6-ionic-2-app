@@ -10,7 +10,7 @@
     </button>
     <ion-title>{{tabHeader.title}}</ion-title>
     <ion-buttons end *ngIf="tabHeader.icons">
-      <button ion-button icon-only *ngFor="let icon of tabHeader.icons; let inx = index;"
+      <button ion-button padding icon-only *ngFor="let icon of tabHeader.icons"
       (click)="showModal(icon.modal)">
         <ion-icon name="{{icon.name}}"></ion-icon>
       </button>

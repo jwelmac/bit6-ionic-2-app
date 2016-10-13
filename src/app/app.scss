@@ -28,3 +28,7 @@ ion-menu{
     border-bottom: 0 !important;
   }
 }
+
+button.bar-button[icon-only]{
+    padding: 0 5px;
+}

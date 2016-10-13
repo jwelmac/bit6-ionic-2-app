@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
+import { ContactListPage }  from "../contacts/contact-list/contact-list";
 /*
   Generated class for the Calls page.
 
@@ -15,7 +16,7 @@ import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
 export class CallsPage {
   headerIcons: TabHeaderIcon[] = [
     {name: "videocam"},
-    {name: "call", modal: "Hello Modal"}
+    {name: "call", modal: ContactListPage}
   ];
   tabHeader: TabHeader = new TabHeader("Calls", this.headerIcons);
   public selectedType: string = "all";

@@ -14,7 +14,7 @@ import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
   templateUrl: 'contacts.html'
 })
 export class ContactsPage {
-  headerIcons: TabHeaderIcon[] = [{name: "ios-person-add-outline"}];
+  headerIcons: TabHeaderIcon[] = [{name: "person-add"}];
   tabHeader: TabHeader = new TabHeader("Contacts", this.headerIcons);
 
   constructor(public navCtrl: NavController) {}

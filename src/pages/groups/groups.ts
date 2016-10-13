@@ -13,7 +13,7 @@ import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
   templateUrl: 'groups.html'
 })
 export class GroupsPage {
-  headerIcons: TabHeaderIcon[] = [{name: "ios-add-circle-outline"}];
+  headerIcons: TabHeaderIcon[] = [{name: "add-circle"}];
   tabHeader: TabHeader = new TabHeader("Groups", this.headerIcons);
 
   constructor(public navCtrl: NavController) {}

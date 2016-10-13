@@ -126,7 +126,7 @@ export class AppData {
     let toast = this.toastCtrl.create({
       message: msg,
       showCloseButton: true,
-      duration: 3000,
+      duration: 5000,
       closeButtonText: "OK"
     });
 
