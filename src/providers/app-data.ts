@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { ToastController, LoadingController } from 'ionic-angular';
+import { Push } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
 
@@ -46,8 +47,23 @@ export class AppData {
   initBit6() {
     try {
       this.b6 = Bit6.init(this.config.API);
+
+
+          //Setup Push Plugin
+          let push = Push.init({
+              android: {
+                  senderID: this.config.Push.GCM
+              },
+              ios: {
+                  alert: "true",
+                  badge: true,
+                  sound: 'false'
+              },
+              windows: {}
+          });
     } catch (Error) {
       console.log("Bit6 not found. Ensure you are serving using Phonegap or Cordova?");
+      console.log(Error);
     }
   }
 

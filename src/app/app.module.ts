@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
+import { Ucfirst } from "../pipes/ucfirst";
+
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactListPage } from '../pages/contacts/contact-list/contact-list';
@@ -26,7 +28,8 @@ import { AppData }  from "../providers/app-data";
     LoginPage,
     ChatsPage,
     GroupsPage,
-    CallsPage
+    CallsPage,
+    Ucfirst
   ],
   imports: [
     IonicModule.forRoot(MyApp)
