@@ -2,7 +2,33 @@
   "API":  {
     "apikey": ""
   },
-  "Push": {
-    "GCM": ""
+  "PUSH": {
+      "android": {
+          "senderID": ""
+      },
+      "ios": {
+          "alert": true,
+          "badge": true,
+          "sound": false
+      },
+      "windows": {}
+  },
+  "AUTH" : {
+    "delegated": , //boolean - Will authentication be delegated to your remote server
+    "username": {
+      "type": "", //string - Type of input expected for username (Options: text, email or tel)
+      "invalid": [] //Array<string> - regex entries indicating invalid usernames eg. [".+@test\.com"]
+    },
+    "server": {
+      "loginUrl": "", //string - Url to send login details. Must return JWT token see eg. https://github.com/bit6/bit6-token-generator-php
+      "pwdResetUrl": "" //string - Url to send username to initiate password reset
+    }
+  },
+  "MESSAGES": {
+    "encrypt": , //boolean - Should messages be encrypted
+    "receipt": , //string - When to send read receipt (Options: choose, open or respond)
+                //choose - Allow user to choose when to send read receipt (open or respond)
+                //open - Send when message is opened
+                //respond - Send when user starts typing a response
   }
 }

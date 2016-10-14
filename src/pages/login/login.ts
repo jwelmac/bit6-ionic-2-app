@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { TabsPage } from "../tabs/tabs";
-import { AppData }  from "../../providers/app-data";
+import { AuthService }  from "../../providers/auth-service";
 
 /*
   Generated class for the Login page.
@@ -16,6 +16,7 @@ import { AppData }  from "../../providers/app-data";
 export class LoginPage {
   login: {
     username?: string,
+    userType?: string,
     password?: string,
     passwordCheck?: string,
     passwordsMatch?: boolean
@@ -26,16 +27,17 @@ export class LoginPage {
 
   constructor(
     public navCtrl: NavController,
-    public appData: AppData
+    public authService: AuthService
   ) {
     this.login.passwordsMatch = false;
+    this.login.userType = authService.getUserType();
   }
 
   onLogin(form) {
     this.submitted = true;
 
     if (form.valid) {
-      this.appData.authClicked(this.login.username, this.login.password, this.signup)
+      this.authService.authClicked(this.login.username, this.login.password, this.signup)
                   .then( msg => this.navCtrl.push(TabsPage).then( () => console.log(msg) ))
                   .catch( msg => console.log("Auth Error:", msg));
     }

@@ -5,7 +5,8 @@ import { Storage } from '@ionic/storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
-import { AppData, AUTH_KEY }  from "../providers/app-data";
+import { AppData }  from "../providers/app-data";
+import { AuthService, AUTH_KEY }  from "../providers/auth-service";
 
 
 @Component({
@@ -18,27 +19,23 @@ export class MyApp {
   constructor(
     platform: Platform,
     private appData: AppData,
+    public authService: AuthService,
     private storage: Storage
   ) {
       platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
         // Here you can do any higher level native things you might need.
         StatusBar.styleDefault();
-        this.init();
+        //initBit6
+        appData.initBit6();
+
+        //Set the root page
+        storage.get(AUTH_KEY).then( value => {
+            authService.resumeSession(value)
+                   .then( () => this.rootPage = TabsPage)
+                   .catch( () => this.rootPage = LoginPage);
+        });
       });
-  }
-
-  //Initialize the main app components
-  init() {
-    //initBit6
-    this.appData.initBit6();
-
-    //Set the root page
-    this.storage.get(AUTH_KEY).then( value => {
-        this.appData.resumeSession(value)
-               .then( () => this.rootPage = TabsPage)
-               .catch( () => this.rootPage = LoginPage);
-    });
   }
 
   logout() {

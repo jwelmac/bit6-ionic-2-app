@@ -16,6 +16,7 @@ import { ChatsPage } from '../pages/chats/chats';
 import { GroupsPage } from '../pages/groups/groups';
 import { CallsPage } from '../pages/calls/calls';
 import { AppData }  from "../providers/app-data";
+import { AuthService }  from "../providers/auth-service";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,6 @@ import { AppData }  from "../providers/app-data";
     GroupsPage,
     CallsPage
   ],
-  providers: [AppData, Storage]
+  providers: [AppData, Storage, AuthService]
 })
 export class AppModule {}
