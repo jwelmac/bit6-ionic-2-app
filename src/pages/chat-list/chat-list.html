@@ -1,0 +1,13 @@
+<ion-header>
+  <tab-header [tabHeader]="tabHeader"></tab-header>
+</ion-header>
+
+<ion-content *ngIf="chatList">
+  <ion-list>
+    <ion-list-header>Today</ion-list-header>
+    <chat-list-item *ngFor="let chat of chatList" (click)="openChat(chat.uri)" [chat]="chat"></chat-list-item>
+  </ion-list>
+  <ion-list>
+    <ion-list-header>Yesterday</ion-list-header>
+  </ion-list>
+</ion-content>

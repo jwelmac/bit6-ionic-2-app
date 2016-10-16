@@ -97,7 +97,6 @@ export class AuthService {
                       setTimeout(() => this.appData.showToast(err), 1000);
                   } else {
                       resolve();
-                      console.log('Bit6:', this.appData.b6);
                       this.completeLogin();
                   }
               });
@@ -115,7 +114,10 @@ export class AuthService {
 
     //Perform functions and/or set variables to complete the login process
     completeLogin() {
+      console.log('Bit6:', this.appData.b6);
+      this.appData.setBit6Updated();
       this.appData.setDisplayName();
+      this.appData.addListeners();
     }
 
 }

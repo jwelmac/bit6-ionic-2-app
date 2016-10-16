@@ -1,0 +1,9 @@
+ion-list>chat-list-item:last-child{
+  .item-block {
+    border-bottom: 0.55px solid #c8c7cc
+  }
+
+  .item-inner {
+    border-bottom: 0 !important;
+  }
+}

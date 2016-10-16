@@ -12,10 +12,12 @@ import { ContactsPage } from '../pages/contacts/contacts';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabHeaderComponent } from '../pages/tabs/tab-header/tab-header';
 import { LoginPage } from "../pages/login/login";
-import { ChatsPage } from '../pages/chats/chats';
+import { ChatListPage } from '../pages/chat-list/chat-list';
+import { ChatListItem } from '../pages/chat-list/chat-list-item/chat-list-item';
 import { GroupsPage } from '../pages/groups/groups';
 import { CallsPage } from '../pages/calls/calls';
 import { AppData }  from "../providers/app-data";
+import { Bit6Listener }  from "../providers/bit6-listener";
 import { AuthService }  from "../providers/auth-service";
 
 @NgModule({
@@ -27,7 +29,8 @@ import { AuthService }  from "../providers/auth-service";
     TabsPage,
     TabHeaderComponent,
     LoginPage,
-    ChatsPage,
+    ChatListPage,
+    ChatListItem,
     GroupsPage,
     CallsPage,
     Ucfirst
@@ -44,10 +47,11 @@ import { AuthService }  from "../providers/auth-service";
     TabsPage,
     TabHeaderComponent,
     LoginPage,
-    ChatsPage,
+    ChatListPage,
+    ChatListItem,
     GroupsPage,
     CallsPage
   ],
-  providers: [AppData, Storage, AuthService]
+  providers: [AppData, Storage, AuthService, Bit6Listener]
 })
 export class AppModule {}
