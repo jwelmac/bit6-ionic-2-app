@@ -4,8 +4,17 @@ import { NavController } from 'ionic-angular';
 export interface ChatInterface {
   from: string,
   uri: string,
-  lastMessage: string,
-  updated: string
+  lastMessage: {
+    received: boolean,
+    content: string
+  },
+  updated: number,
+  status: {
+    icon: string,
+    color: string
+  },
+  messages: Array<any>,
+  unread: number
 }
 
 @Component({

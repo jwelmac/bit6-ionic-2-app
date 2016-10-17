@@ -26,16 +26,18 @@ export class ChatListPage {
     public navCtrl: NavController,
     private appData: AppData
   ) {}
+
   ngOnInit() {
     this.subscription = this.appData.bit6Updated$
-       .subscribe(ready => this.chatList = ready ? this.appData.getChatList() : {});
+       .subscribe(updated => this.chatList = updated ? this.appData.getChatList() : []);
   }
+
   ngOnDestroy() {
     // prevent memory leak when component is destroyed
     this.subscription.unsubscribe();
   }
 
-  openChat(uri: string) {
-    console.log("Opening chat with "+uri);
+  openChat(chat: any) {
+    console.log("Opening chat: ", chat);
   }
 }

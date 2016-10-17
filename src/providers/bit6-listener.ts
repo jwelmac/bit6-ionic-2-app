@@ -14,7 +14,7 @@ export class Bit6Listener {
     // A conversation has changed
     appData.b6.on('conversation', (c, op) => {
         console.log('onConv', c);
-        this.zone.run(() => appData.setBit6Updated());
+        this.zone.run(appData.setBit6Updated);
     });
   }
 

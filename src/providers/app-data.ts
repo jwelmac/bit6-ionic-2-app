@@ -24,6 +24,31 @@ export class AppData {
   private configUrl: string = "app.config.json";
   //App configuration
   public config: any;
+  // Status icons
+  private statusIcons: any = {
+    "message":{
+      'Sending': {
+        "icon": "cloud-upload",
+        "color": "light"
+      },
+      'Sent': {
+        "icon": "cloud-done",
+        "color": "favorite"
+      },
+      'Delivered': {
+        "icon": "mail",
+        "color": "secondary"
+      },
+      'Read': {
+        "icon": "mail-open",
+        "color": "baby-blue"
+      },
+      'Failed': {
+        "icon": "close-circle",
+        "color": "danger"
+      }
+    }
+  };
 
   constructor(
     public http: Http,
@@ -89,17 +114,24 @@ export class AppData {
   }
 
   /* Conversation Functions */
-  getChatList() {
-    let chats = {};
+  getChatList(): Array<ChatInterface> {
+    let chats = [];
     if (this.b6) {
-      chats = Object.keys(this.b6.conversations)
+      let conv = this.b6.conversations;
+      chats = Object.keys(conv)
                     .map(uri => {
-                      let lastMsg = this.b6.conversations[uri].getLastMessage();
+                      let lastMsg = conv[uri].getLastMessage();
                       let chat: ChatInterface = {
                         from: this.getNameFromIdentity(uri),
                         uri: uri,
-                        lastMessage: this.getMessageContent(lastMsg),
-                        updated: this.getMessageUpdateTime(lastMsg)
+                        lastMessage: {
+                          received: lastMsg.incoming(),
+                          content: this.getMessageContent(lastMsg)
+                        },
+                        updated: lastMsg.updated,
+                        status: this.getMessageStatus(lastMsg),
+                        messages: this.b6.conversations[uri].messages,
+                        unread: conv[uri].getUnreadCount()
                       };
                       return chat;
                     });
@@ -126,5 +158,10 @@ export class AppData {
   //Get the time a message was last updated
   getMessageUpdateTime(msg: any): string {
     return 'now';
+  }
+
+  //Get message status icon
+  getMessageStatus(msg: any) {
+    return msg.isCall() ? "" : this.statusIcons.message[msg.getStatusString()];
   }
 }

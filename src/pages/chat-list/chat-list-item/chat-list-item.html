@@ -1,6 +1,14 @@
 <ion-item>
-  <ion-avatar item-left=""><img src="assets/img/avatar-ts-jessie.png" alt=""></ion-avatar>
+  <ion-avatar item-left><img src="assets/img/avatar-ts-jessie.png" alt="profile_pic"></ion-avatar>
   <h2>{{ chat.from }}</h2>
-  <p> {{ chat.lastMessage }} </p>
-  <ion-note item-right>{{ chat.updated }}</ion-note>
+  <p> {{ chat.lastMessage.content }} </p>
+  <ion-note item-right>
+    {{ chat.updated | date:'shortTime' }}
+    <span [ngSwitch]="chat.lastMessage.received">
+      <ion-icon *ngSwitchCase="false" name="{{chat.status.icon}}" color="{{chat.status.color}}"></ion-icon>
+      <ion-icon *ngSwitchDefault name="{{chat.unread > 0 ? 'mail' : 'mail-open'}}">
+        <ion-badge *ngIf="chat.unread > 0" color="danger">{{chat.unread}}</ion-badge>
+      </ion-icon>
+    </span>
+  </ion-note>
 </ion-item>

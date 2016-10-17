@@ -5,9 +5,9 @@
 <ion-content *ngIf="chatList">
   <ion-list>
     <ion-list-header>Today</ion-list-header>
-    <chat-list-item *ngFor="let chat of chatList" (click)="openChat(chat.uri)" [chat]="chat"></chat-list-item>
+    <chat-list-item *ngFor="let chat of chatList" (click)="openChat(chat)" [chat]="chat"></chat-list-item>
   </ion-list>
   <ion-list>
-    <ion-list-header>Yesterday</ion-list-header>
+    <ion-list-header>Previous</ion-list-header>
   </ion-list>
 </ion-content>

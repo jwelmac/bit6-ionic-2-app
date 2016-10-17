@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild , NgZone} from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { Storage } from '@ionic/storage';
@@ -20,7 +20,8 @@ export class MyApp {
     platform: Platform,
     private appData: AppData,
     public authService: AuthService,
-    private storage: Storage
+    private storage: Storage,
+    private zone: NgZone
   ) {
       platform.ready().then(() => {
         // Okay, so the platform is ready and our plugins are available.
@@ -39,7 +40,10 @@ export class MyApp {
   }
 
   logout() {
-    this.storage.remove(AUTH_KEY)
-                .then(() => this.nav.push(LoginPage));
+    this.appData.b6.session.logout();
+    this.storage.remove(AUTH_KEY).then(() =>
+          this.nav.push(LoginPage)
+    );
+    location.reload();
   }
 }

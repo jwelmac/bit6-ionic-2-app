@@ -7,3 +7,27 @@ ion-list>chat-list-item:last-child{
     border-bottom: 0 !important;
   }
 }
+
+chat-list-item {
+  [item-right] {
+    text-align: right;
+  }
+
+  ion-icon {
+    font-size: 1.6em;
+    margin-right: 5px;
+  }
+
+  ion-badge {
+    font-size: 1.6rem;
+    position: absolute;
+    right: 10px;
+    top: 28px;
+    padding: 0 2px;
+    min-width: 10px;
+  }
+
+  ion-icon, ion-badge {
+    display: block;
+  }
+}
