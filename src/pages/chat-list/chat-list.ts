@@ -1,18 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
+import { TabHeader, TabHeaderIcon } from '../../components';
 import { AppData }  from "../../providers/app-data";
 
 import {Subscription} from 'rxjs/Subscription';
 
 
-/*
-  Generated class for the Chats page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'chat-list.html'
 })

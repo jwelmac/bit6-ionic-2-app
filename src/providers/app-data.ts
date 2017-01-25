@@ -17,7 +17,7 @@ declare var Bit6;
 export class AppData {
   //Bit6 instance
   public b6: any;
-  // Is Bit6 ready
+  // Is Bit6 ready/updated
   private updated = new BehaviorSubject<boolean>(false);
   bit6Updated$ = this.updated.asObservable();
   //Config param
@@ -69,6 +69,14 @@ export class AppData {
     } catch (Error) {
       console.log("Bit6 not found. Ensure you are serving using Phonegap or Cordova?");
     }
+  }
+
+  //Perform functions and/or set variables to complete the login process
+  completeLogin() {
+    console.log('Bit6:', this.b6);
+    this.addListeners();
+    this.setDisplayName();
+    this.setBit6Updated();
   }
 
   addListeners() {

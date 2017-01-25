@@ -3,10 +3,8 @@ import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 import { Storage } from '@ionic/storage';
 
-import { TabsPage } from '../pages/tabs/tabs';
-import { LoginPage } from '../pages/login/login';
-import { AppData }  from "../providers/app-data";
-import { AuthService, AUTH_KEY }  from "../providers/auth-service";
+import { TabsPage, LoginPage } from '../pages';
+import { AppData, AuthService, AUTH_KEY }  from "../providers";
 
 
 @Component({

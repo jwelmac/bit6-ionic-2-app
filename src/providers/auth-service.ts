@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
-import { LoadingController } from 'ionic-angular';
+import { LoadingController, Loading } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
 import { AppData }  from "./app-data";
@@ -63,7 +63,7 @@ export class AuthService {
                         this.storage.set(AUTH_KEY, this.appData.b6.session.save());
                     }
                     resolve(msg+": "+ident+" - logged in");
-                    this.completeLogin();
+                    this.appData.completeLogin();
                 }
             });
         } else {
@@ -72,23 +72,23 @@ export class AuthService {
       });
     }
 
-    /*
+    /**
     * Respond to an authentication failure
-    * @param err - Error Object or string containing error message
-    * @param loading - LoadingController instance
-    * @param reject - Promise reject callback
+    * @param {any} err - Error Object or string containing error message
+    * @param {Loading} loading - LoadingController instance
+    * @param {any} reject - Promise reject callback
     */
-    authFailed(err, loading, reject) {
+    authFailed(err: any, loading: Loading, reject: any) {
       loading.dismiss();
       this.appData.handleError(err, reject);
     }
 
-    /*
+    /**
     * Resume a previously saved session.
-    * @param authToken Object - Authorization token saved from b6.session.save()
-    * A Promise resolution or rejection
+    * @param {any} authToken - Authorization token saved from b6.session.save()
+    * @return A Promise resolution or rejection
     */
-    resumeSession(authToken) {
+    resumeSession(authToken: any) {
       return new Promise( (resolve, reject) => {
           if (this.appData.b6.session && authToken){
               this.appData.b6.session.resume(authToken, err => {
@@ -97,7 +97,7 @@ export class AuthService {
                       setTimeout(() => this.appData.showToast(err), 1000);
                   } else {
                       resolve();
-                      this.completeLogin();
+                      this.appData.completeLogin();
                   }
               });
           } else {
@@ -110,14 +110,6 @@ export class AuthService {
     rememberLogin(event) {
       this.storage.set('keepLoggedIn', event.checked)
                   .then(() => this.keepLoggedIn = event.checked);
-    }
-
-    //Perform functions and/or set variables to complete the login process
-    completeLogin() {
-      console.log('Bit6:', this.appData.b6);
-      this.appData.setBit6Updated();
-      this.appData.setDisplayName();
-      this.appData.addListeners();
     }
 
 }

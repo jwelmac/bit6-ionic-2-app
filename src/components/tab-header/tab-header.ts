@@ -1,20 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ModalController } from 'ionic-angular';
-
-// Interface for declaring a icon to place in the tab header
-export interface TabHeaderIcon {
-  name: string, //Ionicon name
-  modal?: any //Component to open in modal when clicked
-}
-
-//Class to make a complete tab header
-export class TabHeader {
-  constructor (
-    public title: string,
-    public icons: Array<TabHeaderIcon> = []
-  ){
-  }
-}
+import {TabHeader} from './';
 
 //Component to display tab header
 @Component({

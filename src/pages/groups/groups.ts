@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
+import { TabHeader, TabHeaderIcon } from '../../components';
 /*
   Generated class for the Groups page.
 

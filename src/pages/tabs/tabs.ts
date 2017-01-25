@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ChatListPage } from '../chat-list/chat-list';
-import { GroupsPage } from '../groups/groups';
-import { ContactsPage } from '../contacts/contacts';
-import { CallsPage } from '../calls/calls';
+import { ChatListPage,  GroupsPage, ContactsPage, CallsPage } from '../';
 
 export interface TabInterface {
   title: string,
@@ -18,14 +15,14 @@ export interface TabInterface {
 export class TabsPage {
   // this tells the tabs component which Pages
   // should be each tab's root Page
-  public tabs: TabInterface[] = [
-    {title: "Chats", icon: "ios-chatbubbles", component: ChatListPage},
-    {title: "Contacts", icon: "ios-person", component: ContactsPage},
-    {title: "Groups", icon: "ios-people", component: GroupsPage},
-    {title: "Calls", icon: "ios-call", component: CallsPage}
-  ];
+  public tabs: TabInterface[];
 
   constructor() {
-
+    this.tabs  = [
+      {title: "Chats", icon: "ios-chatbubbles", component: ChatListPage},
+      {title: "Contacts", icon: "ios-person", component: ContactsPage},
+      {title: "Groups", icon: "ios-people", component: GroupsPage},
+      {title: "Calls", icon: "ios-call", component: CallsPage}
+    ];
   }
 }

@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
+import { TabHeader, TabHeaderIcon } from '../../components';
 import { ContactListPage }  from "../contacts/contact-list/contact-list";
-/*
-  Generated class for the Calls page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-calls',
   templateUrl: 'calls.html'

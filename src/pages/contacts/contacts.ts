@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TabHeader, TabHeaderIcon } from '../tabs/tab-header/tab-header';
+import { TabHeader, TabHeaderIcon } from '../../components';
 
-/*
-  Generated class for the Contacts page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-contacts',
   templateUrl: 'contacts.html'
 })
 export class ContactsPage {
-  headerIcons: TabHeaderIcon[] = [{name: "person-add"}];
-  tabHeader: TabHeader = new TabHeader("Contacts", this.headerIcons);
+  headerIcons: TabHeaderIcon[];
+  tabHeader: TabHeader;
 
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController) {
+    this.headerIcons = [{name: "person-add"}];
+    this.tabHeader = new TabHeader("Contacts", this.headerIcons);
+  }
 
 }
