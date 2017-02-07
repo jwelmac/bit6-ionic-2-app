@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 
 import { IonicApp, IonicModule } from 'ionic-angular';
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { Storage } from '@ionic/storage';
 
-import { Ucfirst } from "../pipes/ucfirst";
+import { UcFirst } from "../pipes/ucfirst";
 
 import { MyApp } from './app.component';
 import { TabHeaderComponent } from '../components';
@@ -12,6 +13,13 @@ import {
   GroupsPage, CallsPage
 } from '../pages';
 import { AppData, Bit6Listener, AuthService }  from "../providers";
+
+//Configure cloud settings
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': ""
+  }
+};
 
 @NgModule({
   declarations: [
@@ -26,10 +34,11 @@ import { AppData, Bit6Listener, AuthService }  from "../providers";
     ChatListItem,
     GroupsPage,
     CallsPage,
-    Ucfirst
+    UcFirst
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    CloudModule.forRoot(cloudSettings)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

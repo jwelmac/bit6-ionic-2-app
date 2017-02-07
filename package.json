@@ -4,34 +4,33 @@
   "homepage": "https://www.meditall.co",
   "private": true,
   "scripts": {
-    "build": "ionic-app-scripts build --copy ./config/copy.config.js",
-    "watch": "ionic-app-scripts watch --copy ./config/copy.config.js",
-    "serve:before": "watch",
-    "emulate:before": "build",
-    "deploy:before": "build",
-    "build:before": "build",
-    "run:before": "build"
+    "ionic:build": "ionic-app-scripts build --copy ./config/copy.config.js",
+    "ionic:watch": "ionic-app-scripts watch --copy ./config/copy.config.js",
+    "ionic:serve": "ionic-app-scripts serve --copy ./config/copy.config.js",
+    "local:serve": "npm run ionic:build && echo 'Clearing local folder...' && rm -rf /var/www/html/ionic/* && echo 'Building Cordova files' && cordova build browser && echo 'Copying new files...' && cp -r platforms/browser/www/* /var/www/html/ionic/"
   },
   "dependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/compiler": "^2.0.0",
-    "@angular/compiler-cli": "0.6.2",
-    "@angular/core": "^2.0.0",
-    "@angular/forms": "^2.0.0",
-    "@angular/http": "^2.0.0",
-    "@angular/platform-browser": "^2.0.0",
-    "@angular/platform-browser-dynamic": "^2.0.0",
-    "@angular/platform-server": "^2.0.0",
-    "@ionic/storage": "^1.0.3",
-    "ionic-angular": "^2.0.0-rc.1",
-    "ionic-native": "^2.2.3",
-    "ionicons": "^3.0.0",
+    "@angular/common": "2.2.1",
+    "@angular/compiler": "2.2.1",
+    "@angular/compiler-cli": "2.2.1",
+    "@angular/core": "2.2.1",
+    "@angular/forms": "2.2.1",
+    "@angular/http": "2.2.1",
+    "@angular/platform-browser": "2.2.1",
+    "@angular/platform-browser-dynamic": "2.2.1",
+    "@angular/platform-server": "2.2.1",
+    "@ionic/cloud-angular": "^0.9.0",
+    "@ionic/storage": "1.1.7",
+    "ionic-angular": "2.0.0",
+    "ionic-native": "2.4.1",
+    "ionicons": "3.0.0",
     "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.21"
+    "xcode": "^0.9.1",
+    "zone.js": "0.6.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "0.0.36",
-    "typescript": "^2.0.3"
+    "@ionic/app-scripts": "1.0.0",
+    "typescript": "2.0.9"
   },
   "description": "Bit6 Ionic 2 App: An Ionic project",
   "cordovaPlugins": [
@@ -44,6 +43,20 @@
     {
       "locator": "https://github.com/bit6/bit6-cordova",
       "id": "com.bit6.sdk"
+    },
+    {
+      "id": "phonegap-plugin-push",
+      "locator": "phonegap-plugin-push",
+      "variables": {
+        "SENDER_ID": "XXXXXXXXX"
+      }
+    },
+    {
+      "id": "ionic-plugin-deeplinks",
+      "locator": "ionic-plugin-deeplinks",
+      "variables": {
+        "URL_SCHEME": "quikclinik"
+      }
     }
   ],
   "cordovaPlatforms": []

@@ -4,7 +4,7 @@ import { Injectable, Pipe, PipeTransform } from '@angular/core';
   name: 'ucfirst'
 })
 @Injectable()
-export class Ucfirst implements PipeTransform{
+export class UcFirst implements PipeTransform{
   /*
     Takes a value and makes the first letter uppercase
    */

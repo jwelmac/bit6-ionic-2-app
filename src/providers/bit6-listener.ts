@@ -3,21 +3,22 @@ import { Injectable, NgZone } from '@angular/core';
 // import 'rxjs/add/operator/map';
 
 import { AppData }  from "./app-data";
-import { Ucfirst } from '../pipes/ucfirst';
+import { UcFirst } from '../pipes/ucfirst';
 
 @Injectable()
 export class Bit6Listener {
 //Local appData instance
 appData: AppData;
 listeners: Array<string>;
+ucfirst: UcFirst;
 
   constructor(
-    private zone: NgZone,
-    private ucfirst: Ucfirst
+    private zone: NgZone
   ) {
     this.listeners = Object.keys(this).map(listener => {
       if (listener.startsWith('on')) return listener.substr(2);
     });
+    this.ucfirst = new UcFirst();
   }
 
   init(appData: AppData) {
